@@ -9,6 +9,9 @@ enum custom_keycodes {
   HSV_131_255_255,
   HSV_74_255_255,
   ST_MACRO_0,
+  ST_MACRO_1,
+  ST_MACRO_2,
+  ST_MACRO_3,
 };
 
 
