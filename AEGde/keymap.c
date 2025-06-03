@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [3] = LAYOUT_voyager(
     KC_TRANSPARENT, RGB_MODE_FORWARD,RGB_SLD,        HSV_0_255_85,   HSV_131_255_255,HSV_74_255_255,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, ST_MACRO_0,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_F11,         KC_F12,         KC_TRANSPARENT, 
+    KC_TRANSPARENT, ST_MACRO_0,     ST_MACRO_1, ST_MACRO_2, ST_MACRO_3, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_F11,         KC_F12,         KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_LEFT_SHIFT,  KC_LEFT_CTRL,   KC_MS_BTN1,     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN2,     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_MS_WH_LEFT,  KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_WH_RIGHT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
@@ -54,10 +54,56 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RGUI(SS_TAP(X_1)));
-    }
-    break;
+      if (record->event.pressed) {
+        register_code(KC_LGUI);        // Hold Win key
+        wait_ms(100);
+        tap_code(KC_1);
+        wait_ms(100);
+        unregister_code(KC_LGUI);      // Release Win key
+      }
+      return false;
+
+    case ST_MACRO_1:
+      if (record->event.pressed) {
+        register_code(KC_LGUI);
+        wait_ms(100);
+        tap_code(KC_1);
+        wait_ms(100);
+        tap_code(KC_1);
+        wait_ms(100);
+        unregister_code(KC_LGUI);
+      }
+      return false;
+
+    case ST_MACRO_2:
+      if (record->event.pressed) {
+        register_code(KC_LGUI);
+        wait_ms(100);
+        tap_code(KC_1);
+        wait_ms(100);
+        tap_code(KC_1);
+        wait_ms(100);
+        tap_code(KC_1);
+        wait_ms(100);
+        unregister_code(KC_LGUI);
+      }
+      return false;
+
+    case ST_MACRO_3:
+      if (record->event.pressed) {
+        register_code(KC_LGUI);
+        wait_ms(100);
+        tap_code(KC_1);
+        wait_ms(100);
+        tap_code(KC_1);
+        wait_ms(100);
+        tap_code(KC_1);
+        wait_ms(100);
+        tap_code(KC_1);
+        wait_ms(100);
+        unregister_code(KC_LGUI);
+      }
+      return false;
 
     case DUAL_FUNC_0:
       if (record->tap.count > 0) {
